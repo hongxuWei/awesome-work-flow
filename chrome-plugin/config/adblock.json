@@ -4,4 +4,8 @@
 }, {
   "domain": "www.zhihu.com",
   "rules": [".Pc-card.Card", ".TopstoryItem--advertCard"]
+}, {
+  "domain": "",
+  "fuckMode": ["::shadow > div"],
+  "rules": [".layout .ad-block", "#content_right"]
 }]

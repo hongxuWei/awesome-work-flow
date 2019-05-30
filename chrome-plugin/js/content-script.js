@@ -17,5 +17,12 @@
       }`;
       document.body.appendChild(style);
     }
-  })
+    if (data.fuckMode) {
+      setTimeout(() => data.fuckMode.forEach(selector => {
+        document.querySelectorAll(selector).forEach(element => {
+          item.parentNode.removeChild(element)
+        });
+      }), 3000);
+    }
+  });
 })(window);
