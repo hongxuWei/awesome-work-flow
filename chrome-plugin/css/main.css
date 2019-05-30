@@ -1,0 +1,117 @@
+/* start common */
+body, section, h4, h5, p, div {
+  margin: 0;
+  padding: 0;
+}
+/* end common */
+
+/* start popup */
+.popup {
+  width: 500px;
+  min-height: 100px;
+  padding: 0 20px;
+}
+.popup-title {
+  padding: 10px 0;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+}
+.popup-icons {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.popup-icons-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.popup-icons-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.popup-icons-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.popup-icons-item-icon.ad-block {
+  background-image: url("../img/shield.png")
+}
+.popup-icons-item-icon.common-use {
+  background-image: url("../img/search.png")
+}
+.popup-icons-item-text {
+  color: #333;
+  font-size: 12px;
+}
+/* end popup */
+
+/* start Ad block */
+.adblock {
+  width: 70vw;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.adblock .adblock-title {
+  padding: 30px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+.adblock-domain {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.adblock-domain-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.adblock-domain-name-text {
+  font-size: 18px;
+}
+.adblock-domain-name-text::before {
+  content: "域名："
+}
+.adblock-domain-name-button {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+}
+.adblock-domain-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 0 10px;
+  margin: 0 auto;
+  line-height: 2;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  cursor: pointer;
+}
+.adblock-domain-list-item:hover {
+  background: #eee;
+}
+.adblock-domain-list-item:last-child {
+  border-bottom: none;
+}
+.adblock-domain-list-item-close {
+  line-height: 1;
+  padding: 5px;
+}
+/* end Ad block */
