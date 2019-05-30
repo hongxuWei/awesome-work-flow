@@ -4,7 +4,7 @@
   /* start event modal */
   const evnetMap = {
     newDomain: () => {
-      const domain = prompt('请输入规则');
+      const domain = prompt('请输入域名');
       if (domain) {
         const index = gBalck.push({ domain, rules: [] }) - 1;
         storageSet('black', gBalck).then(() => {
