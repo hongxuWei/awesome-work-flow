@@ -5,3 +5,7 @@ chrome.contextMenus.create({
     chrome.tabs.create({ url: `https://dict.youdao.com/search?q=${encodeURI(params.selectionText)}` });
   }
 });
+
+function notify (params){
+  chrome.notifications.create(null, params);
+}

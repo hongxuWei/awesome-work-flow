@@ -11,12 +11,7 @@
         dataType: "json",
         success: function (black) {
           gBalck = black;
-          storageSet('black', gBalck).then(() => {
-            const $container = $('#adblock');
-            const $template = ceateTemplate(black);
-            $container.find('section').remove();
-            $container.append($template);
-          });
+          storageSet('black', gBalck).then(() => reRenderAllList(black));
         }
       });
     },
@@ -27,18 +22,18 @@
         return;
       }
       if (domain) {
+        if (gBalck.find(item => item.domain === domain )) {
+          var bg = chrome.extension.getBackgroundPage();
+          bg.notify({
+            type: 'basic',
+            iconUrl: 'img/icon.png',
+            title: '域名重复',
+            message: `域名 ${domain} 已存在`
+          });
+          return;
+        }
         const index = gBalck.push({ domain, rules: [] }) - 1;
-        storageSet('black', gBalck).then(() => {
-          $('.adblock').append(
-            `<section class="adblock-domain">
-              <h5 class="adblock-domain-name">
-                <div class="adblock-domain-name-text">${domain}</div>
-                <div class="adblock-domain-name-button" data-domain-index="${index}" data-domain="${domain}">添加</div>
-              </h5>
-              <div class="adblock-domain-list"></div>
-            </section>`
-          );
-        });
+        storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
     editBlack: (e) => {
@@ -46,13 +41,19 @@
       const index = $element.data('domain-index');
       const newRule = prompt('请输入规则');
       if (newRule) {
+        if (gBalck[index].rules.find(rule => rule === newRule)) {
+          var bg = chrome.extension.getBackgroundPage();
+          bg.notify({
+            type: 'basic',
+            iconUrl: '/img/icon.png',
+            title: '过滤规则重复',
+            message: `过滤规则 ${newRule} 已存在`,
+          });
+          return;
+        }
         const ruleIndex = gBalck[index].rules.push(newRule) - 1;
         const { domain } = gBalck[index];
-        storageSet('black', gBalck).then(() => {
-          $('section .adblock-domain-list').eq(index).append(
-            `<div class="adblock-domain-list-item">${newRule}<div class="adblock-domain-list-item-close" data-domain="${domain}" data-domain-index="${index}" data-rule-index="${ruleIndex}"data-rule="${newRule}">x</div></div>`
-          );
-        });
+        storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
     removeRule: (e) => {
@@ -61,11 +62,10 @@
       const ruleIndex = $element.data('rule-index');
       const rules = gBalck[domainIndex].rules;
       rules.splice(ruleIndex, 1)
-      storageSet('black', gBalck).then(() => {
-        $('section').eq(domainIndex)
-        .find('.adblock-domain-list-item').eq(ruleIndex)
-        .remove();
-      });
+      if (rules.length === 0) {
+        gBalck.splice(domainIndex, 1);
+      }
+      storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
     }
   };
 
@@ -114,6 +114,13 @@
       const param = { [key]: value };
       chrome.storage.sync.set(param, resolve);
     });
+  }
+
+  const reRenderAllList = (black) => {
+    const $container = $('#adblock');
+    const $template = ceateTemplate(black);
+    $container.find('section').remove();
+    $container.append($template);
   }
 
   const ceateTemplate = (black) => {
