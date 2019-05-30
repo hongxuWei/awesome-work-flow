@@ -66,6 +66,18 @@ body, section, h4, h5, p, div {
   font-size: 24px;
   cursor: pointer;
 }
+.adblock-remote {
+  height: 32px;
+  line-height: 32px;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+}
 .adblock-domain {
   padding: 10px;
   margin-bottom: 20px;

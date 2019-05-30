@@ -1,5 +1,21 @@
-console.log('我的天哪');
-window.aaaa= 1;
-console.log(window)
+((window) => {
+  const storageGet = (key, defaultValue) => {
+    return new Promise((resolve) => {
+      const param = { [key]: defaultValue };
+      chrome.storage.sync.get(param, (items) => resolve(items[key]) );
+    });
+  }
 
-console.log(document.getElementsByTagName('body'))
+  storageGet('black', []).then(black => {
+    const { hostname } = location;
+    const data = black.find(item => item.domain === hostname);
+    if (data && data.rules.length > 0) {
+      const style = document.createElement('style');
+      style.type = "text/css";
+      style.innerHTML = `${data.rules.join()} {
+        display: none !important;
+      }`;
+      document.body.appendChild(style);
+    }
+  })
+})(window);

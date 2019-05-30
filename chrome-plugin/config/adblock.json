@@ -1,0 +1,7 @@
+[{
+  "domain": "c.biancheng.net",
+  "rules": ["#ad-arc-top, #ad-position-bottom, #all-course, #footer, #ad-arc-top, #header, #nice-arcs, #return-top, #topbar, #topbar-wrap, #header_wrap, #weixin-sidebar, #qq-qun-float, #main > div > a"]
+}, {
+  "domain": "www.zhihu.com",
+  "rules": [".Pc-card.Card", ".TopstoryItem--advertCard"]
+}]

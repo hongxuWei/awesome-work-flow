@@ -3,6 +3,22 @@
   var gBalck = [];
   /* start event modal */
   const evnetMap = {
+    loadFromRemoteConfig: () => {
+      $.ajax({
+        type: "GET",
+        url: "https://raw.githubusercontent.com/hongxuWei/awesome-work-flow/master/chrome-plugin/config/adblock.json",
+        dataType: "json",
+        success: function (black) {
+          gBalck = black;
+          storageSet('black', gBalck).then(() => {
+            const $container = $('#adblock');
+            const $template = ceateTemplate(black);
+            $container.find('section').remove();
+            $container.append($template);
+          });
+        }
+      });
+    },
     newDomain: () => {
       const domain = prompt('请输入域名');
       if (domain) {
@@ -81,19 +97,6 @@
   });
   /* end event modal */
 
-  /*
-    c.biancheng.net###ad-arc-top
-    c.biancheng.net###ad-position-bottom
-    c.biancheng.net###all-course
-    c.biancheng.net###footer
-    c.biancheng.net###header
-    c.biancheng.net###nice-arcs
-    c.biancheng.net###return-top
-    c.biancheng.net###topbar
-    www.zhihu.com##.Pc-card.Card
-    www.zhihu.com##.TopstoryItem--advertCard
-  */
-
   const storageGet = (key, defaultValue) => {
     return new Promise((resolve) => {
       const param = { [key]: defaultValue };
@@ -108,28 +111,7 @@
     });
   }
 
-  // storageSet('black', [{
-  //   domain: 'c.biancheng.net',
-  //   rules: [
-  //     "#ad-arc-top",
-  //     "#ad-position-bottom",
-  //     "#all-course",
-  //     "#footer",
-  //     "#ad-arc-top",
-  //     "#header",
-  //     "#nice-arcs",
-  //     "#return-top",
-  //     "#topbar"
-  //   ]
-  // }, {
-  //   domain: 'www.zhihu.com',
-  //   rules: [".Pc-card.Card", ".TopstoryItem--advertCard"]
-  // }])
-
-  // view black list
-
-  const renderBalckList = (black) => {
-    const $container = $('.adblock');
+  const ceateTemplate = (black) => {
     let template = '';
     black.forEach((item, index) => {
       const { domain, rules } = item;
@@ -147,10 +129,13 @@
           </div>
         </section>`
     });
-    $container.append($(template));
+    return $(template);
   }
+
   storageGet('black', []).then(black => {
     gBalck = black;
-    renderBalckList(black);
+    const $container = $('#adblock');
+    const $template = ceateTemplate(black);
+    $container.append($template);
   });
 })();
