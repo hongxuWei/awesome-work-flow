@@ -3,10 +3,11 @@
   var gBalck = [];
   /* start event modal */
   const evnetMap = {
-    loadFromRemoteConfig: () => {
+    loadFromRemoteConfig: (url) => {
+      url = typeof url === 'string' ? url : null
       $.ajax({
         type: "GET",
-        url: "https://raw.githubusercontent.com/hongxuWei/awesome-work-flow/master/chrome-plugin/config/adblock.json",
+        url: url || "https://raw.githubusercontent.com/hongxuWei/awesome-work-flow/master/chrome-plugin/config/adblock.json",
         dataType: "json",
         success: function (black) {
           gBalck = black;
@@ -21,6 +22,10 @@
     },
     newDomain: () => {
       const domain = prompt('请输入域名');
+      if (domain === '_debug_') {
+        evnetMap.loadFromRemoteConfig('/config/adblock.json');
+        return;
+      }
       if (domain) {
         const index = gBalck.push({ domain, rules: [] }) - 1;
         storageSet('black', gBalck).then(() => {
