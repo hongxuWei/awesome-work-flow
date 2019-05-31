@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+(() => {
   const storageGet = (key, defaultValue) => {
     return new Promise((resolve) => {
       const param = { [key]: defaultValue };
       chrome.storage.sync.get(param, (items) => resolve(items[key]) );
     });
   }
-
+  /* start adblock */
   storageGet('black', []).then(black => {
     const { hostname } = location;
     const data = black.find(item => item.domain === hostname);
@@ -15,14 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
       style.innerHTML = `${data.rules.join()} {
         display: none !important;
       }`;
-      document.body.appendChild(style);
+      document.body && document.body.appendChild(style);
     }
     if (data && Array.isArray(data.fuckMode) && data.fuckMode.length > 0) {
       setTimeout(() => data.fuckMode.forEach(selector => {
-        document.querySelectorAll(selector).forEach(element => {
+        document && document.querySelectorAll(selector).forEach(element => {
           element.parentNode.removeChild(element)
         });
       }), 3000);
     }
   });
-});
+  /* end adblock */
+})();
