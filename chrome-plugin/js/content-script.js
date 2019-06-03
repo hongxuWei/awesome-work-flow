@@ -25,5 +25,12 @@
       }), 3000);
     }
   });
+  // "blog.csdn.net" 展开查看优化
+  (() => {
+    const { hostname } = location;
+    if (hostname === 'blog.csdn.net') {
+      document.getElementById("article_content").style.height = 'auto';
+    }
+  })();
   /* end adblock */
 })();

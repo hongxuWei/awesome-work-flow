@@ -34,7 +34,7 @@
   "rules": ["#home #blog-comments-placeholder, #home #comment_form, #home #sideBar, #home #blog_post_info, #footer, #footer_bottom, #header_block, #side_right .sidebar-image, #side_right > #search_block, .ad_right_text, #wrapper > #header, #wrapper > #hd_info, #cnblogs_a1"]
 }, {
   "domain": "blog.csdn.net",
-  "rules": ["aside > div:not(#asideNewArticle):not(#asideCategory):not(#asideHotArticle)"]
+  "rules": ["aside > div:not(#asideNewArticle):not(#asideCategory):not(#asideHotArticle)", ".tool-box", ".indexSuperise", ".meau-gotop-box > a:not(#backtop)", ".mediav_ad", ".hide-article-box", ".adsbygoogle", ".recommend-fixed-box"]
 }, {
   "domain": "www.csdn.net",
   "rules": [".banner-ad-box, .indexSuperise, aside .slide-outer, aside .magazine_box, aside .persion_article, aside .other_company, aside .feed_viewpoint, aside .feed_vote, aside .feed_new_arrlist", ".csdn-side-toolbar > a:not([data-type=\"gotop\"])"]
