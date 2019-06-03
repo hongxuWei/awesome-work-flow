@@ -27,6 +27,7 @@
     "contextMenus",
     "notifications",
     "webRequestBlocking",
+    "bookmarks",
     "storage",
     "http://*/*",
     "https://*/*"

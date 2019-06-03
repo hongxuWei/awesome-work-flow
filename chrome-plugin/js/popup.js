@@ -5,7 +5,7 @@
       window.open(chrome.extension.getURL('pages/ad_block.html'));
     },
     goCommonWeb: () => {
-      window.open(chrome.extension.getURL('pages/ad_block.html'));
+      window.open(chrome.extension.getURL('pages/common_web.html'));
     }
   };
 

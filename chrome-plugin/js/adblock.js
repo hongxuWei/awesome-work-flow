@@ -32,7 +32,6 @@
           });
           return;
         }
-        const index = gBalck.push({ domain, rules: [] }) - 1;
         storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
@@ -51,8 +50,6 @@
           });
           return;
         }
-        const ruleIndex = gBalck[index].rules.push(newRule) - 1;
-        const { domain } = gBalck[index];
         storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
