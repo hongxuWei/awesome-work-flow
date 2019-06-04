@@ -29,7 +29,12 @@
   (() => {
     const { hostname } = location;
     if (hostname === 'blog.csdn.net') {
-      document.getElementById("article_content").style.height = 'auto';
+      const style = document.createElement('style');
+      style.type = "text/css";
+      style.innerHTML = `#article_content, .article_content {
+        height: auto !important;
+      }`;
+      document.body && document.body.appendChild(style);
     }
   })();
   /* end adblock */
