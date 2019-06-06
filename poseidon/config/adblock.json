@@ -18,7 +18,8 @@
   {
     "domain": "www.baidu.com",
     "fuckMode": [
-      "::shadow > div"
+      "::shadow > div",
+      "#content_left > div:not(.result)"
     ],
     "rules": [
       ".layout .ad-block",

@@ -22,7 +22,7 @@
         document && document.querySelectorAll(selector).forEach(element => {
           element.parentNode.removeChild(element)
         });
-      }), 3000);
+      }), 1000);
     }
   });
   // "blog.csdn.net" 展开查看优化
