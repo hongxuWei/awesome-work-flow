@@ -135,6 +135,12 @@ body, section, h4, h5, p, div {
   padding: 20px;
   margin: 0 auto;
 }
+.common-web-modal {
+  margin: 40px 0 0;
+}
+.common-web-modal:first-child {
+  margin: 0;
+}
 .common-web-title {
   font-size: 20px;
   line-height: 40px;
