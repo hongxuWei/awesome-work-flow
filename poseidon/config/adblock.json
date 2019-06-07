@@ -87,7 +87,15 @@
     "rules": [
       ".suspension-panel button:not(.to-top-btn)",
       ".sticky-section",
+      ".sidebar-block.banner-block",
+      ".sidebar-block.more-block",
+      ".sidebar-block .sticky-banner",
+      ".article-suspended-panel",
+      ".sidebar-bd-entry",
+      ".article-banner",
       ".ad-entry-list",
+      ".timeline-content ul.entry-list > li:not([data-growing-title=\"entryList\"])",
+      ".sidebar-block.wechat-sidebar-block",
       "aside .auth-section, aside .banner-section, aside .link-section, aside .more-section, .follow-section, .index-book-collect, .app-download-sidebar-block, .mobile-bottom-bar"
     ]
   },
