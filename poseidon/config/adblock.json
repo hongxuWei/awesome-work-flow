@@ -124,5 +124,12 @@
       ".banner-ad-box, .indexSuperise, aside .slide-outer, aside .magazine_box, aside .persion_article, aside .other_company, aside .feed_viewpoint, aside .feed_vote, aside .feed_new_arrlist",
       ".csdn-side-toolbar > a:not([data-type=\"gotop\"])"
     ]
+  },
+  {
+    "domain": "books.studygolang.com",
+    "rules": [
+      "#bottom",
+      ".google-auto-placed"
+    ]
   }
 ]

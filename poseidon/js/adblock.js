@@ -32,6 +32,7 @@
           });
           return;
         }
+        gBalck.push({ domain, rules: [] });
         storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
@@ -50,6 +51,7 @@
           });
           return;
         }
+        gBalck[index].rules.push(newRule);
         storageSet('black', gBalck).then(() => reRenderAllList(gBalck));
       }
     },
