@@ -201,6 +201,9 @@ body, section, h4, h5, p, div {
   background-image: url(../img/npm.png);
 }
 .common-web-item-icon.yarn {
-  background-image: url(../img/yarn.png)
+  background-image: url(../img/yarn.png);
+}
+.common-web-item-icon.ts {
+  background-image: url(../img/ts.svg);
 }
 /* end common web */
