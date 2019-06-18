@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "rollup -c --watch",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "lint": "eslint src"
   },
   "files": [
     "bin"
