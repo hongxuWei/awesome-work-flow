@@ -1,6 +1,7 @@
-import json from 'rollup-plugin-json';
+import json from 'rollup-plugin-json'
+import { terser } from 'rollup-plugin-terser'
 
-export default {
+const config = {
   input: 'src/index.js',
   output: {
     banner: '#!/usr/bin/env node',
@@ -11,3 +12,10 @@ export default {
     json()
   ]
 }
+
+if (process.env.NODE_ENV === 'production') {
+  // 压缩
+  config.plugins.push(terser())
+}
+
+export default config
