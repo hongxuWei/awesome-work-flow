@@ -4,6 +4,8 @@ import createDir from "../utils/createDir"
 import download from "../utils/download"
 import renderFiles from "../utils/renderFiles"
 
+import { success } from "../utils/log"
+
 const init = async (name, cmd) => {
   const context = path.resolve(name)
   checkName(name)
@@ -17,10 +19,10 @@ const init = async (name, cmd) => {
   const options = {
     projectName: name
   }
-  await renderFiles(options)
 
-  console.log(1)
-  // require('../lib/init')(name, parseArgs(cmd), context);
+  await renderFiles(context, options)
+
+  success("新建项目成功")
 }
 
 export default init

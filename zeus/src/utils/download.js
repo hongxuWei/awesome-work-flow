@@ -2,7 +2,7 @@ import inquirer from "inquirer"
 import downloadGit from "download-git-repo"
 import ora from "ora"
 
-import { error } from "../utils/log"
+import { error, success } from "../utils/log"
 import { ERROR_CODE } from "../config/exitCode"
 import { DESKTOP, MOBILE, NPM_CLI, supportTypes } from "../config/supportTypes"
 
@@ -74,6 +74,7 @@ const download = async (path, type) => {
     error(`下载 ${type} 模板失败，请重新执行`)
     process.exit(ERROR_CODE)
   }
+  success(`${type} 模板下载成功`)
 }
 
 export default download
