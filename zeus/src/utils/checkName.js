@@ -2,9 +2,8 @@ import { ERROR_CODE } from "../config/exitCode"
 import { error } from "../utils/log"
 
 /**
- * 
  * @param {string} name
- * @isValid boolean
+ * @returns {boolean}
  */
 export const validateName = (name) => {
   return /^[\w_-]+$/.test(name)

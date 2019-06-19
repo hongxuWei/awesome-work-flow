@@ -1,5 +1,6 @@
 import fs from "fs"
 import inquirer from "inquirer"
+import execa from "execa"
 
 import { ERROR_CODE } from "../config/exitCode"
 import { info } from "../utils/log"
@@ -11,7 +12,7 @@ const confirName = async cmd => {
     type: "input",
     name: "name",
     message: "请重新输入项目名称",
-    validate: (value) => {
+    validate: value => {
       if (validateName(value)) {
         return true
       }
@@ -33,7 +34,11 @@ const createDir = async (dirName, cmd) => {
     // 如果是 force 模式
     if (force) {
       info(`正在使用 force 模式删除目录 ${dirName}`)
-      fs.rmdirSync(dirName)
+      try {
+        execa.shellSync(`rm -rf ${dirName}`)
+      } catch (e) {
+        // noop
+      }
       info(`正在重建目录 ${dirName}`)
       fs.mkdirSync(dirName)
       return
@@ -59,6 +64,11 @@ const createDir = async (dirName, cmd) => {
       case 1: 
         info(`正在删除目录 ${dirName}`)
         fs.rmdirSync(dirName)
+        try {
+          execa.shellSync(`rm -rf ${dirName}`)
+        } catch (e) {
+          // noop
+        }
         info(`正在重建目录 ${dirName}`)
         fs.mkdirSync(dirName)
         break

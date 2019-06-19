@@ -10,7 +10,8 @@ program.version(version).usage("<command> [options]")
 // 创建开发环境
 program
   .command("init <project-name>")
-  .description("创建业务端项目或npm业务公用包")
+  .description("创建业务端项目或业务公用包")
+  .option("-t, --type <desktop/mobile/cli>", "项目类型")
   .option("-f, --force", "如果项目已存在，会覆盖该目录")
   .action((name, cmd) => {
     actions.init(name, cmd)
