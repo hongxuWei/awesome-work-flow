@@ -3,24 +3,29 @@ import { version } from "../package.json"
 import checkVersion from "./utils/checkVersion"
 import { error } from "./utils/log"
 import actions from "./actions/index"
+import { ERROR_CODE } from "./config/exitCode.js"
 
 checkVersion()
-program.version(version).usage("<command> [options]")
+
+let projectName
 
 // 创建开发环境
 program
-  .command("init <project-name>")
+  .version(version)
+  .arguments("<project-name>")
+  .usage("<project-name> [options]")
   .description("创建业务端项目或业务公用包")
-  .option("-t, --type <desktop/mobile/cli>", "项目类型")
+  .option("-t, --type <desktop/mobile/cli>")
   .option("-f, --force", "如果项目已存在，会覆盖该目录")
+  .allowUnknownOption()
   .action((name, cmd) => {
+    projectName = name
     actions.init(name, cmd)
   })
 
-// 未注册命令提示帮助
-program.arguments("<command>").action(cmd => {
-  error(`\n未找到命令 ${cmd}\n`)
-  program.outputHelp()
-})
-
 program.parse(process.argv)
+
+if (projectName === undefined) {
+  error("项目名称是必填的")
+  process.exit(ERROR_CODE)
+}
