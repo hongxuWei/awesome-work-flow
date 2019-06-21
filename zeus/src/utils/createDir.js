@@ -63,7 +63,6 @@ const createDir = async (dirName, cmd) => {
       switch (overwrite) {
       case 1: 
         info(`正在删除目录 ${dirName}`)
-        fs.rmdirSync(dirName)
         try {
           execa.shellSync(`rm -rf ${dirName}`)
         } catch (e) {
