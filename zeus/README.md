@@ -16,8 +16,8 @@ yarn add zeus-build-cli -g
 
 ```shell
 zeus <project-name>
-# demo
 
+# demo
 zeus demo
 ```
 
