@@ -13,8 +13,7 @@
 ⭕前端脚手架脚手架
 
 模板完成情况
-* ❌desktop
-* ❌mobile
+* ⭕web [详情](https://github.com/hongxuWei/zeus-template/tree/web)
 * ⭕cli [详情](https://github.com/hongxuWei/zeus-template/tree/cli)
 
 ---
