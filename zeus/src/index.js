@@ -15,7 +15,7 @@ program
   .arguments("<project-name>")
   .usage("<project-name> [options]")
   .description("创建业务端项目或业务公用包")
-  .option("-t, --type <desktop/mobile/cli>")
+  .option("-t, --type <web/cli>")
   .option("-f, --force", "如果项目已存在，会覆盖该目录")
   .allowUnknownOption()
   .action((name, cmd) => {

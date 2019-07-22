@@ -4,7 +4,7 @@ import ora from "ora"
 
 import { error, success } from "../utils/log"
 import { ERROR_CODE } from "../config/exitCode"
-import { DESKTOP, MOBILE, NPM_CLI, supportTypes } from "../config/supportTypes"
+import { WEB, NPM_CLI, supportTypes } from "../config/supportTypes"
 
 /**
  * 询问用户是否
@@ -16,11 +16,8 @@ const listSupportTypes = () => new Promise(resolve => {
     name: "type",
     message: "选择你想创建的项目类型",
     choices: [{
-      name: "PC 端项目",
-      value: DESKTOP
-    }, {
-      name: "移动端项目",
-      value: MOBILE
+      name: "web 项目",
+      value: WEB
     }, {
       name: "NPM CLI 包",
       value: NPM_CLI

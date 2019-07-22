@@ -25,8 +25,7 @@ zeus demo
 
 ##### **-t, --type 新建项目类型**
 
-* desktop - PC 端项目
-* mobile - 移动端项目
+* web - web 项目
 * cli - 命令行项目
 
 ##### **-f, --force 如果重名强制覆盖文件夹**
