@@ -1,6 +1,9 @@
+import { storageGet } from '../../utils/chromeStorage'
+
 export type AdBlockRule = {
   domain :string,
-  rules: Array<string>
+  rules: Array<string>,
+  fuckMode?: Array<string>,
 }
 
 export const adBlockRule = [
@@ -141,5 +144,39 @@ export const adBlockRule = [
 
 // 黑名单页面操作
 export const registerAdBlock  = () => {
-  
+  storageGet('black', []).then((black :Array<AdBlockRule>) => {
+    const { hostname } = location
+    const data :AdBlockRule|undefined = black.find(item => item.domain === hostname)
+
+    if (data && Array.isArray(data.rules) && data.rules.length > 0) {
+      const style = document.createElement('style')
+      style.type = "text/css"
+      style.innerHTML = `${data.rules.join()} {
+        display: none !important;
+      }`
+      document.body && document.body.appendChild(style)
+    }
+
+    if (data && Array.isArray(data.fuckMode) && data.fuckMode.length > 0) {
+      const fuckMode = data.fuckMode || []
+      setTimeout(() => fuckMode.forEach(selector => {
+        document && document.querySelectorAll(selector).forEach(element => {
+          if (element !== null && element.parentNode) {
+            element.parentNode.removeChild(element)
+          }
+        })
+      }), 1000)
+    }
+  })
+
+  // "blog.csdn.net" 展开查看优化
+  const { hostname } = location
+  if (hostname === 'blog.csdn.net') {
+    const style = document.createElement('style')
+    style.type = "text/css"
+    style.innerHTML = `#article_content, .article_content {
+      height: auto !important;
+    }`
+    document.body && document.body.appendChild(style)
+  }
 }
