@@ -4,7 +4,7 @@ import ora from "ora"
 
 import { error, success } from "../utils/log"
 import { ERROR_CODE } from "../config/exitCode"
-import { WEB, NPM_CLI, supportTypes } from "../config/supportTypes"
+import { WEB, NPM_CLI, CHROME_EXTENSION, supportTypes } from "../config/supportTypes"
 
 /**
  * 询问用户是否
@@ -16,11 +16,14 @@ const listSupportTypes = () => new Promise(resolve => {
     name: "type",
     message: "选择你想创建的项目类型",
     choices: [{
-      name: "web 项目",
+      name: "Web 项目",
       value: WEB
     }, {
-      name: "NPM CLI 包",
+      name: "npm cli 包",
       value: NPM_CLI
+    }, {
+      name: "Chrome 插件",
+      value: CHROME_EXTENSION
     }]
   }).then(async answers => {
     const { type } = answers
