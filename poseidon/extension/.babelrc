@@ -15,6 +15,7 @@
     ]
   ],
   "plugins": [
+      ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "ant"],
       [
         "@babel/plugin-transform-runtime",
       ],

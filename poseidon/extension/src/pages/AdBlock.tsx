@@ -5,7 +5,6 @@ import * as style from "./AdBlock.less"
 
 import { adBlockRule, AdBlockRule } from './Content/AdBlock'
 import { storageGet, storageSet } from '../utils/chromeStorage'
-import { Domain } from 'domain'
 
 type IProps = {
   history: History
