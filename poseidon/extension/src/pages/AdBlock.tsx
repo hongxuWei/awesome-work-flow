@@ -3,7 +3,7 @@ import { Card, List, Button } from 'antd'
 
 import * as style from "./AdBlock.less"
 
-import { adBlockRule, AdBlockRule } from './Content/AdBlock'
+import { adBlockRule, AdBlockRule } from '../constants/adBlockRule'
 
 class AdBlock extends React.PureComponent {
   render() {
