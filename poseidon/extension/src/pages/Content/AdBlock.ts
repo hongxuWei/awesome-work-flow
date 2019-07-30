@@ -1,5 +1,7 @@
 import { adBlockRule, AdBlockRule } from '../../constants/adBlockRule'
 
+export const BLACK_KAY = 'black'
+
 export const storageGet = (key: string, defaultValue:Array<AdBlockRule>) => (
   new Promise(resolve => {
     const param = { [key]: defaultValue }
@@ -7,10 +9,16 @@ export const storageGet = (key: string, defaultValue:Array<AdBlockRule>) => (
   })
 )
 
+export const storageSet = (key: string, value:Array<AdBlockRule>) => (
+  new Promise(resolve => {
+    chrome.storage.sync.set({ [key]: value }, resolve)
+  })
+)
+
 // 黑名单页面操作
 export const registerAdBlock  = () => {
   // 获取黑名单信息
-  storageGet('black', []).then((black:Array<AdBlockRule>) => {
+  storageGet(BLACK_KAY, []).then((black:Array<AdBlockRule>) => {
     const { hostname } = location
     const data = black.find(item => item.domain === hostname)
     if (data && Array.isArray(data.rules) && data.rules.length > 0) {
