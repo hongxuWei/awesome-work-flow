@@ -1,4 +1,4 @@
-const path =require('path')
+const path = require('path')
 const config = require('./webpack.base.config')
 const apiMocker = require('mocker-api')
 const webpack = require('webpack')
@@ -22,16 +22,22 @@ const _config = {
   module: {
     rules: [
       {
-        test: /\.global\.less$/,
+        test: /\.less$/,
+        include: [/node_modules/],
         use: [
           'style-loader',
           'css-loader',
-          'less-loader'
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true
+            }
+          }
         ]
       },
       {
         test: /\.less$/,
-        exclude: [/node_modules/, /global/],
+        exclude: [/node_modules/],
         use: [
           "style-loader",
           {
