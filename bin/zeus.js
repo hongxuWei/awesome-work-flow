@@ -1,17 +1,6 @@
 const inquirer = require('inquirer')
-const { exec } = require('child_process')
 const chalk = require('chalk')
-
-// 返回一个 exec promise
-const execPromise = (action) => new Promise((resolve) => {
-  exec(action, (error) => {
-    if (error !== null) {
-      console.log(chalk.red(error))
-      resolve(false)
-    }
-    resolve(true)
-  })
-})
+const { execPromise } = require('./util')
 
 module.exports = async () => {
   // 去 zeus 目录下执行 build
