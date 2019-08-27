@@ -8,6 +8,7 @@
     "48": "statics/icon.png",
     "128": "statics/icon.png"
   },
+  "omnibox": { "keyword" : "go" },
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["js/content.js"],
