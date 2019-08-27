@@ -5,6 +5,7 @@ import { createBrowserHistory } from "history"
 import Popup from './pages/Popup'
 import NewTab from './pages/NewTab'
 import AdBlock from './pages/AdBlock'
+import TodoList from './pages/TodoList'
 
 const history = createBrowserHistory()
 
@@ -24,6 +25,10 @@ class Router extends React.PureComponent {
           path="/adblock"
           history={history}
           component={AdBlock} />
+        <Route exact
+          path="/todo"
+          history={history}
+          component={TodoList} />
       </HashRouter>
     )
   }

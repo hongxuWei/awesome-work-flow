@@ -11,14 +11,18 @@ class Popup extends React.PureComponent {
       <Card style={{ border: 'none' }}>
         <div className={style.popup}>
           {
-            POPUPLIST.map((tools: PopItem) => (
-              <section key={tools.title}>
-                <h4 className={style.popupTitle}>{tools.title}</h4>
+            POPUPLIST.map((toolBlock: PopItem) => (
+              <section key={toolBlock.title}>
+                <h4 className={style.popupTitle}>{toolBlock.title}</h4>
                 <div className={style.popupIcons}>
-                  <Link className={style.popupIconsItem} to={tools.toolInfo.href} target="_blank">
-                    <div className={`${style.popupIconsItemIcon}`} style={{backgroundImage: `url(${tools.toolInfo.icon})`}}></div>
-                    <p className={style.popupIconsItemText}>{tools.toolInfo.name}</p>
-                  </Link>
+                  {
+                    toolBlock.tools.map(tool => (
+                      <Link key={tool.name} className={style.popupIconsItem} to={tool.href} target="_blank">
+                        <div className={`${style.popupIconsItemIcon}`} style={{backgroundImage: `url(${tool.icon})`}}></div>
+                        <p className={style.popupIconsItemText}>{tool.name}</p>
+                      </Link>
+                    ))
+                  }
                 </div>
               </section>
             ))
