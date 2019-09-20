@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history"
 import Popup from './pages/Popup'
 import NewTab from './pages/NewTab'
 import AdBlock from './pages/AdBlock'
-import TodoList from './pages/TodoList'
+import TodoList from './pages/Todo'
 
 const history = createBrowserHistory()
 

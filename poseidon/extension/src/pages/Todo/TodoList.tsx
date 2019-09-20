@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-class TodoList extends React.PureComponent {
+class TodoLists extends React.PureComponent {
   render() {
     return (
       <div></div>
@@ -8,4 +8,4 @@ class TodoList extends React.PureComponent {
   }
 }
 
-export default TodoList
+export default TodoLists
