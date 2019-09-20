@@ -52,6 +52,10 @@ const NewTab:Array<TFavList> = [{
     name: 'TS',
     href: 'https://www.tslang.cn/docs/handbook/basic-types.html',
     bgClass: 'ts',
+  }, {
+    name: 'WebGL',
+    href: 'https://webglfundamentals.org/webgl/lessons/zh_cn/',
+    bgClass: 'webgl'
   }]
 }, {
   title: "常用",
